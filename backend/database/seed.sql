@@ -1,55 +1,21 @@
 USE bankapp_db;
 SET SQL_SAFE_UPDATES = 0;
 
--- Ensure required tables exist
-CREATE TABLE IF NOT EXISTS users (
-	user_id INT PRIMARY KEY AUTO_INCREMENT,
-	username VARCHAR(50) UNIQUE NOT NULL,
-	password VARCHAR(255) NOT NULL,
-	first_name VARCHAR(50) NOT NULL,
-	last_name VARCHAR(50) NOT NULL,
-	email VARCHAR(100) UNIQUE NOT NULL,
-	phone VARCHAR(20),
-	address TEXT,
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	is_active BOOLEAN DEFAULT TRUE,
-	INDEX idx_username (username),
-	INDEX idx_email (email)
-);
 
-CREATE TABLE IF NOT EXISTS accounts (
-	account_id INT PRIMARY KEY AUTO_INCREMENT,
-	user_id INT NOT NULL,
-	account_type ENUM('checking', 'savings', 'credit') NOT NULL,
-	account_number VARCHAR(20) NOT NULL UNIQUE,
-	balance DECIMAL(12, 2) DEFAULT 0.00,
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	is_active BOOLEAN DEFAULT TRUE,
-	FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-	INDEX idx_user_id (user_id),
-	INDEX idx_account_number (account_number)
-);
 
-CREATE TABLE IF NOT EXISTS transactions (
-	transaction_id VARCHAR(20) PRIMARY KEY,
-	account_id INT NOT NULL,
-	transaction_date DATE NOT NULL,
-	transaction_type ENUM('deposit', 'withdrawal', 'transfer', 'payment') NOT NULL,
-	description VARCHAR(255) NOT NULL,
-	amount DECIMAL(12, 2) NOT NULL,
-	balance_after DECIMAL(12, 2) NOT NULL,
-	status ENUM('completed', 'pending', 'failed') DEFAULT 'completed',
-	related_account_id INT NULL,
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	FOREIGN KEY (account_id) REFERENCES accounts(account_id) ON DELETE CASCADE,
-	FOREIGN KEY (related_account_id) REFERENCES accounts(account_id) ON DELETE SET NULL,
-	INDEX idx_account_id (account_id),
-	INDEX idx_transaction_date (transaction_date),
-	INDEX idx_transaction_type (transaction_type),
-	INDEX idx_status (status)
-);
+-- Insert demo users if not exist
+INSERT IGNORE INTO users (user_id, username, password, first_name, last_name, email, phone, address) VALUES
+	(1, 'john.doe', '$2b$10$placeholder', 'John', 'Doe', 'john.doe@email.com', '555-123-4567', '123 Main Street, Anytown, ST 12345'),
+	(2, 'jane.smith', '$2b$10$placeholder', 'Jane', 'Smith', 'jane.smith@email.com', '555-987-6543', '456 Oak Avenue, Somewhere, ST 67890');
+
+-- Insert demo accounts if not exist
+INSERT IGNORE INTO accounts (account_id, user_id, account_type, account_number, balance) VALUES
+	(1, 1, 'checking', '****1234', 5250.00),
+	(2, 1, 'savings', '****5678', 12890.50),
+	(3, 1, 'credit', '****9012', -1450.25),
+	(4, 2, 'checking', '****3456', 8750.25),
+	(5, 2, 'savings', '****7890', 25000.00),
+	(6, 2, 'credit', '****1122', -2890.75);
 
 DELETE FROM transactions WHERE transaction_id LIKE 'TXN%';
 

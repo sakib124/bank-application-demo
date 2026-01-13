@@ -1,6 +1,6 @@
 # Banking Web Application Demo
 
-A simple but effective banking web application designed specifically for Selenium automation testing in Java. This application features a complete frontend built with TypeScript and a **backend API with MySQL database persistence**.
+A simple but effective banking web application designed specifically for automation testing. This application features a complete frontend built with TypeScript and a backend API with MySQL database persistence.
 
 ## 🎯 Features
 
@@ -38,13 +38,16 @@ A simple but effective banking web application designed specifically for Seleniu
 
 3. Create a new connection to `localhost:3306` with your root credentials
 
-4. Execute the schema file:
-   - Open `backend/database/schema.sql` in MySQL Workbench
+
+4. Execute the schema file (required):
+   - Open `backend/database/schema.sql` in MySQL Workbench (or run with the MySQL CLI)
    - Run all statements to create the `bankapp_db` database and tables
 
-5. Execute the seed file:
-   - Open `backend/database/seed.sql` in MySQL Workbench
-   - Run all statements to insert test data
+5. Execute the seed file (required):
+   - Open `backend/database/seed.sql` in MySQL Workbench (or run with the MySQL CLI)
+   - Run all statements to insert demo users, accounts, and transactions
+   - Running the seed file will also reset all transactions to the default demo data
+   - You can safely run the seed file multiple times; it will not create duplicate users or accounts
 
 
 ## ⚙️ Installation

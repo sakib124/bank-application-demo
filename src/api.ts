@@ -53,20 +53,6 @@ export class API {
         return this.request('/users/profile');
     }
 
-    static async updateProfile(profileData: any) {
-        return this.request('/users/profile', {
-            method: 'PUT',
-            body: JSON.stringify(profileData),
-        });
-    }
-
-    static async updatePassword(passwordData: { currentPassword: string, newPassword: string }) {
-        return this.request('/users/password', {
-            method: 'PUT',
-            body: JSON.stringify(passwordData),
-        });
-    }
-
     // Account endpoints
     static async getAccounts() {
         return this.request('/accounts');

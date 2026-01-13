@@ -106,8 +106,6 @@ All endpoints are under `http://localhost:3000/api/`.
 
 **User:**
 - `GET /users/profile` — Get profile (requires login)
-- `PUT /users/profile` — Update profile (JSON: `{ "firstName": "John", ... }`)
-- `PUT /users/password` — Change password (JSON: `{ "currentPassword": "welcome_123", "newPassword": "newpass" }`)
 
 **Accounts:**
 - `GET /accounts` — List accounts

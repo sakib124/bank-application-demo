@@ -115,8 +115,6 @@ Should return: `{"status":"OK","message":"Banking API is running"}`
 
 ### Users
 - `GET /api/users/profile` - Get user profile
-- `PUT /api/users/profile` - Update profile
-- `PUT /api/users/password` - Update password
 
 ### Accounts
 - `GET /api/accounts` - Get all accounts

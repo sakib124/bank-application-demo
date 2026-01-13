@@ -198,6 +198,4 @@ router.post('/transfer', requireAuth, async (req, res) => {
     }
 });
 
-// (Removed process-pending endpoint and unused helper functions)
-
 module.exports = router;

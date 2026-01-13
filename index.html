@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank - Login</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <div class="logo">
+                <h1 id="bank-logo" data-testid="bank-logo">🏦 SecureBank</h1>
+            </div>
+            
+            <div class="login-box">
+                <h2 id="login-title" data-testid="login-title">Sign In</h2>
+                
+                <div id="error-message" class="error-message hidden" data-testid="error-message"></div>
+                
+                <form id="login-form" data-testid="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            name="username" 
+                            data-testid="username-input"
+                            placeholder="Enter username" 
+                            required
+                            autocomplete="username">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            data-testid="password-input"
+                            placeholder="Enter password" 
+                            required
+                            autocomplete="current-password">
+                    </div>
+                    
+
+                    
+                    <button 
+                        type="submit" 
+                        id="login-button" 
+                        class="btn btn-primary" 
+                        data-testid="login-button">
+                        Sign In
+                    </button>
+                </form>
+                
+
+                
+                <div class="demo-credentials">
+                    <h4 id="demo-title" data-testid="demo-title">Demo Credentials:</h4>
+                    <p data-testid="demo-user-1"><strong>Username:</strong> john.doe | <strong>Password:</strong> welcome_123</p>
+                    <p data-testid="demo-user-2"><strong>Username:</strong> jane.smith | <strong>Password:</strong> welcome_456</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="dist/login.js"></script>
+</body>
+</html>

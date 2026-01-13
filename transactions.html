@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank - Transaction History</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <nav class="navbar" id="main-navbar" data-testid="main-navbar">
+        <div class="nav-content">
+            <h1 id="nav-logo" data-testid="nav-logo">🏦 SecureBank</h1>
+            <div class="nav-user">
+                <span id="welcome-message" data-testid="welcome-message">Welcome, User</span>
+                <button id="logout-button" class="btn btn-secondary" data-testid="logout-button">Logout</button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="dashboard">
+            <aside class="sidebar" id="sidebar" data-testid="sidebar">
+                <ul class="nav-menu">
+                    <li>
+                        <a href="dashboard.html" id="nav-dashboard" data-testid="nav-dashboard">
+                            📊 Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="transfer.html" id="nav-transfer" data-testid="nav-transfer">
+                            💸 Transfer Money
+                        </a>
+                    </li>
+                    <li>
+                        <a href="transactions.html" id="nav-transactions" class="active" data-testid="nav-transactions">
+                            📜 Transaction History
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html" id="nav-profile" data-testid="nav-profile">
+                            👤 Profile
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            
+            <main class="main-content">
+                <h2 id="page-title" data-testid="page-title">Transaction History</h2>
+                
+                <div class="card filters">
+                    <h3 id="filter-title" data-testid="filter-title">Filter Transactions</h3>
+                    <div class="filter-row">
+                        <div class="form-group">
+                            <label for="filter-account">Account</label>
+                            <select id="filter-account" data-testid="filter-account-select">
+                                <option value="all" data-testid="filter-option-all">All Accounts</option>
+                                <option value="checking" data-testid="filter-option-checking">Checking</option>
+                                <option value="savings" data-testid="filter-option-savings">Savings</option>
+                                <option value="credit" data-testid="filter-option-credit">Credit Card</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="filter-type">Type</label>
+                            <select id="filter-type" data-testid="filter-type-select">
+                                <option value="all" data-testid="filter-type-all">All Types</option>
+                                <option value="deposit" data-testid="filter-type-deposit">Deposit</option>
+                                <option value="withdrawal" data-testid="filter-type-withdrawal">Withdrawal</option>
+                                <option value="transfer" data-testid="filter-type-transfer">Transfer</option>
+                                <option value="payment" data-testid="filter-type-payment">Payment</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="filter-date-from">From Date</label>
+                            <input type="date" id="filter-date-from" data-testid="filter-date-from">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="filter-date-to">To Date</label>
+                            <input type="date" id="filter-date-to" data-testid="filter-date-to">
+                        </div>
+                        
+                        <button class="btn btn-primary" id="apply-filters" data-testid="apply-filters-button">
+                            Apply Filters
+                        </button>
+                        <button class="btn btn-secondary" id="reset-filters" data-testid="reset-filters-button">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card transactions-list">
+                    <div class="list-header">
+                        <h3 id="transactions-count" data-testid="transactions-count">Showing 10 transactions</h3>
+                        <button class="btn btn-small" id="export-transactions" data-testid="export-button">
+                            Export to CSV
+                        </button>
+                    </div>
+                    
+                    <table id="full-transactions-table" data-testid="full-transactions-table">
+                        <thead>
+                            <tr>
+                                <th data-testid="header-id">ID</th>
+                                <th data-testid="header-date">Date</th>
+                                <th data-testid="header-account">Account</th>
+                                <th data-testid="header-type">Type</th>
+                                <th data-testid="header-description">Description</th>
+                                <th data-testid="header-amount">Amount</th>
+                                <th data-testid="header-balance">Balance</th>
+                                <th data-testid="header-status">Status</th>
+                                <th data-testid="header-actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="full-transactions-body" data-testid="full-transactions-body">
+                            <!-- Transactions will be loaded here -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="pagination" id="pagination" data-testid="pagination">
+                        <button class="btn btn-small" id="prev-page" data-testid="prev-page-button" disabled>
+                            Previous
+                        </button>
+                        <span id="page-info" data-testid="page-info">Page 1 of 3</span>
+                        <button class="btn btn-small" id="next-page" data-testid="next-page-button">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script type="module" src="dist/transactions.js"></script>
+</body>
+</html>

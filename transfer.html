@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank - Transfer Money</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <nav class="navbar" id="main-navbar" data-testid="main-navbar">
+        <div class="nav-content">
+            <h1 id="nav-logo" data-testid="nav-logo">🏦 SecureBank</h1>
+            <div class="nav-user">
+                <span id="welcome-message" data-testid="welcome-message">Welcome, User</span>
+                <button id="logout-button" class="btn btn-secondary" data-testid="logout-button">Logout</button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="dashboard">
+            <aside class="sidebar" id="sidebar" data-testid="sidebar">
+                <ul class="nav-menu">
+                    <li>
+                        <a href="dashboard.html" id="nav-dashboard" data-testid="nav-dashboard">
+                            📊 Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="transfer.html" id="nav-transfer" class="active" data-testid="nav-transfer">
+                            💸 Transfer Money
+                        </a>
+                    </li>
+                    <li>
+                        <a href="transactions.html" id="nav-transactions" data-testid="nav-transactions">
+                            📜 Transaction History
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html" id="nav-profile" data-testid="nav-profile">
+                            👤 Profile
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            
+            <main class="main-content">
+                <h2 id="page-title" data-testid="page-title">Transfer Money</h2>
+                
+                <div id="error-message" class="error-message hidden" data-testid="error-message"></div>
+                <div id="success-message" class="success-message hidden" data-testid="success-message"></div>
+                
+                <div class="card transfer-form">
+                    <form id="transfer-form" data-testid="transfer-form">
+                        <div class="form-group">
+                            <label for="from-account">From Account</label>
+                            <select 
+                                id="from-account" 
+                                name="from-account" 
+                                data-testid="from-account-select"
+                                required>
+                                <option value="" data-testid="from-option-default">Select Account</option>
+                                <option value="checking" data-testid="from-option-checking">Checking ****1234 - $5,250.00</option>
+                                <option value="savings" data-testid="from-option-savings">Savings ****5678 - $12,890.50</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="to-account">To Account</label>
+                            <select 
+                                id="to-account" 
+                                name="to-account" 
+                                data-testid="to-account-select"
+                                required>
+                                <option value="" data-testid="to-option-default">Select Account</option>
+                                <option value="checking" data-testid="to-option-checking">Checking ****1234</option>
+                                <option value="savings" data-testid="to-option-savings">Savings ****5678</option>
+                                <option value="external" data-testid="to-option-external" disabled>External Account (Coming Soon)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" id="external-account-group" style="display: none;">
+                            <label for="external-account-number">External Account Number</label>
+                            <input 
+                                type="text" 
+                                id="external-account-number" 
+                                name="external-account-number" 
+                                data-testid="external-account-input"
+                                placeholder="Enter account number"
+                                pattern="[0-9]{10,16}">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input 
+                                type="number" 
+                                id="amount" 
+                                name="amount" 
+                                data-testid="amount-input"
+                                placeholder="0.00" 
+                                step="0.01"
+                                min="0.01"
+                                required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Description (Optional)</label>
+                            <textarea 
+                                id="description" 
+                                name="description" 
+                                data-testid="description-input"
+                                rows="3" 
+                                placeholder="Add a note..."></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button 
+                                type="submit" 
+                                id="submit-transfer" 
+                                class="btn btn-primary" 
+                                data-testid="submit-transfer-button">
+                                Transfer
+                            </button>
+                            <button 
+                                type="reset" 
+                                id="reset-form" 
+                                class="btn btn-secondary" 
+                                data-testid="reset-form-button">
+                                Clear
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div id="confirmation-modal" class="modal hidden" data-testid="confirmation-modal">
+                    <div class="modal-content">
+                        <h3 id="modal-title" data-testid="modal-title">Confirm Transfer</h3>
+                        <div id="transfer-summary" data-testid="transfer-summary">
+                            <p><strong>From:</strong> <span id="confirm-from" data-testid="confirm-from"></span></p>
+                            <p><strong>To:</strong> <span id="confirm-to" data-testid="confirm-to"></span></p>
+                            <p><strong>Amount:</strong> <span id="confirm-amount" data-testid="confirm-amount"></span></p>
+                        </div>
+                        <div class="modal-actions">
+                            <button 
+                                id="confirm-transfer" 
+                                class="btn btn-primary" 
+                                data-testid="confirm-transfer-button">
+                                Confirm
+                            </button>
+                            <button 
+                                id="cancel-transfer" 
+                                class="btn btn-secondary" 
+                                data-testid="cancel-transfer-button">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script type="module" src="dist/transfer.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "bankapp-demo",
+  "version": "1.0.0",
+  "description": "Banking Web Application Demo - Optimized for Selenium Automation",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "serve": "npx http-server . -p 8080"
+  },
+  "keywords": ["banking", "demo", "selenium", "automation"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^20.10.6",
+    "http-server": "^14.1.1"
+  }
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank - Profile</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <nav class="navbar" id="main-navbar" data-testid="main-navbar">
+        <div class="nav-content">
+            <h1 id="nav-logo" data-testid="nav-logo">🏦 SecureBank</h1>
+            <div class="nav-user">
+                <span id="welcome-message" data-testid="welcome-message">Welcome, User</span>
+                <button id="logout-button" class="btn btn-secondary" data-testid="logout-button">Logout</button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="dashboard">
+            <aside class="sidebar" id="sidebar" data-testid="sidebar">
+                <ul class="nav-menu">
+                    <li>
+                        <a href="dashboard.html" id="nav-dashboard" data-testid="nav-dashboard">
+                            📊 Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="transfer.html" id="nav-transfer" data-testid="nav-transfer">
+                            💸 Transfer Money
+                        </a>
+                    </li>
+                    <li>
+                        <a href="transactions.html" id="nav-transactions" data-testid="nav-transactions">
+                            📜 Transaction History
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html" id="nav-profile" class="active" data-testid="nav-profile">
+                            👤 Profile
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            
+            <main class="main-content">
+                <h2 id="page-title" data-testid="page-title">Profile Settings</h2>
+                
+                <div id="success-message" class="success-message hidden" data-testid="success-message"></div>
+                
+                <div class="card profile-info">
+                    <h3 id="profile-title" data-testid="profile-title">Personal Information</h3>
+                    <form id="profile-form" data-testid="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input 
+                                    type="text" 
+                                    id="first-name" 
+                                    name="first-name" 
+                                    data-testid="first-name-input"
+                                    value="John" 
+                                    readonly
+                                    disabled>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input 
+                                    type="text" 
+                                    id="last-name" 
+                                    name="last-name" 
+                                    data-testid="last-name-input"
+                                    value="Doe" 
+                                    readonly
+                                    disabled>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                data-testid="email-input"
+                                value="john.doe@email.com" 
+                                readonly
+                                disabled>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                data-testid="phone-input"
+                                value="555-123-4567" 
+                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                readonly
+                                disabled>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <textarea 
+                                id="address" 
+                                name="address" 
+                                data-testid="address-input"
+                                rows="3" 
+                                readonly
+                                disabled>123 Main Street, Anytown, ST 12345</textarea>
+                        </div>
+                        
+                        <p style="color: #666; font-style: italic;">Contact support to update your personal information.</p>
+                    </form>
+                </div>
+                
+                <div class="card security-settings" style="display: none;">
+                    <h3 id="security-title" data-testid="security-title">Security Settings</h3>
+                    <p style="color: #666; font-style: italic;">Password changes are disabled. Contact support for assistance.</p>
+                </div>
+                
+                <div class="card notification-settings" style="display: none;">
+                    <h3 id="notifications-title" data-testid="notifications-title">Notification Preferences</h3>
+                    <p style="color: #666; font-style: italic;">Notification settings are managed by your administrator.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script type="module" src="dist/profile.js"></script>
+</body>
+</html>

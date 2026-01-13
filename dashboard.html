@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank - Dashboard</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <nav class="navbar" id="main-navbar" data-testid="main-navbar">
+        <div class="nav-content">
+            <h1 id="nav-logo" data-testid="nav-logo">🏦 SecureBank</h1>
+            <div class="nav-user">
+                <span id="welcome-message" data-testid="welcome-message">Welcome, User</span>
+                <button id="logout-button" class="btn btn-secondary" data-testid="logout-button">Logout</button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="dashboard">
+            <aside class="sidebar" id="sidebar" data-testid="sidebar">
+                <ul class="nav-menu">
+                    <li>
+                        <a href="dashboard.html" id="nav-dashboard" class="active" data-testid="nav-dashboard">
+                            📊 Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="transfer.html" id="nav-transfer" data-testid="nav-transfer">
+                            💸 Transfer Money
+                        </a>
+                    </li>
+                    <li>
+                        <a href="transactions.html" id="nav-transactions" data-testid="nav-transactions">
+                            📜 Transaction History
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html" id="nav-profile" data-testid="nav-profile">
+                            👤 Profile
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            
+            <main class="main-content">
+                <h2 id="page-title" data-testid="page-title">Account Dashboard</h2>
+                
+                <div id="success-message" class="success-message hidden" data-testid="success-message"></div>
+                
+                <div class="account-cards">
+                    <div class="card account-card" id="checking-account" data-testid="checking-account">
+                        <h3 data-testid="checking-title">Checking Account</h3>
+                        <p class="account-number" data-testid="checking-number">****1234</p>
+                        <p class="balance" id="checking-balance" data-testid="checking-balance">$5,250.00</p>
+                        <button class="btn btn-small" id="view-checking-details" data-testid="view-checking-details">
+                            View Details
+                        </button>
+                    </div>
+                    
+                    <div class="card account-card" id="savings-account" data-testid="savings-account">
+                        <h3 data-testid="savings-title">Savings Account</h3>
+                        <p class="account-number" data-testid="savings-number">****5678</p>
+                        <p class="balance" id="savings-balance" data-testid="savings-balance">$12,890.50</p>
+                        <button class="btn btn-small" id="view-savings-details" data-testid="view-savings-details">
+                            View Details
+                        </button>
+                    </div>
+                    
+                    <div class="card account-card" id="credit-card" data-testid="credit-card">
+                        <h3 data-testid="credit-title">Credit Card</h3>
+                        <p class="account-number" data-testid="credit-number">****9012</p>
+                        <p class="balance credit" id="credit-balance" data-testid="credit-balance">-$1,450.25</p>
+                        <button class="btn btn-small" id="view-credit-details" data-testid="view-credit-details">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card recent-transactions">
+                    <h3 id="recent-transactions-title" data-testid="recent-transactions-title">Recent Transactions</h3>
+                    <table id="transactions-table" data-testid="transactions-table">
+                        <thead>
+                            <tr>
+                                <th data-testid="header-date">Date</th>
+                                <th data-testid="header-description">Description</th>
+                                <th data-testid="header-amount">Amount</th>
+                                <th data-testid="header-status">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactions-body" data-testid="transactions-body">
+                            <!-- Transactions will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="quick-actions">
+                    <h3 id="quick-actions-title" data-testid="quick-actions-title">Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="quick-transfer" data-testid="quick-transfer">
+                            Transfer Money
+                        </button>
+                        <button class="btn btn-primary" id="quick-pay-bill" data-testid="quick-pay-bill">
+                            Pay Bill
+                        </button>
+                        <button class="btn btn-primary" id="quick-deposit" data-testid="quick-deposit">
+                            Deposit Check
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script type="module" src="dist/dashboard.js"></script>
+</body>
+</html>
